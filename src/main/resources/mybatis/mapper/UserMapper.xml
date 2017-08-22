@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace的值就是dao接口的完整路径，就这个demo而言namespace 就是UserMapper.java的完整路径 -->
+<mapper namespace="com.welleplus.dao.UserDao">
+    <!-- 查询用户信息语句 -->
+    <select id="getUserInfos" resultType="com.welleplus.entity.UserInfo">
+		select
+		*
+		from t_user
+	</select>
+
+</mapper>
