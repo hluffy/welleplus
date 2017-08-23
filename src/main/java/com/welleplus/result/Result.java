@@ -1,14 +1,14 @@
 package com.welleplus.result;
 
 public class Result {
-	private Integer id;
+	private Long id;
 	private String message;
 	private boolean state;
 	private Object data;
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getMessage() {

@@ -1,8 +1,8 @@
-app.controller('treeCtrl',function($scope){
-	$scope.ids = {};
+app.controller('treeCtrl',function($scope,projectService,companyServer){
+	$scope.tree = {};
 	$scope.message;
 	
-	var setting = {
+	$scope.setting = {
 			view: {
 				dblClickExpand : false,
 				showIcon: showIconForTree
@@ -17,64 +17,73 @@ app.controller('treeCtrl',function($scope){
 			}
 		};
 	
-	var zNodes =[
-	 			{ id:1, pId:0, name:"父节点1 - 展开", open:true},
-	 			{ id:11, pId:1, name:"父节点11 - 折叠"},
-	 			{ id:111, pId:11, name:"叶子节点111"},
-	 			{ id:112, pId:11, name:"叶子节点112"},
-	 			{ id:113, pId:11, name:"叶子节点113"},
-	 			{ id:114, pId:11, name:"叶子节点114"},
-	 			{ id:12, pId:1, name:"父节点12 - 折叠"},
-	 			{ id:121, pId:12, name:"叶子节点121"},
-	 			{ id:122, pId:12, name:"叶子节点122"},
-	 			{ id:123, pId:12, name:"叶子节点123"},
-	 			{ id:124, pId:12, name:"叶子节点124"},
-	 			{ id:13, pId:1, name:"父节点13 - 没有子节点", isParent:true},
-	 			{ id:2, pId:0, name:"父节点2 - 折叠"},
-	 			{ id:21, pId:2, name:"父节点21 - 展开", open:true},
-	 			{ id:211, pId:21, name:"叶子节点211"},
-	 			{ id:212, pId:21, name:"叶子节点212"},
-	 			{ id:213, pId:21, name:"叶子节点213"},
-	 			{ id:214, pId:21, name:"叶子节点214"},
-	 			{ id:22, pId:2, name:"父节点22 - 折叠"},
-	 			{ id:221, pId:22, name:"叶子节点221"},
-	 			{ id:222, pId:22, name:"叶子节点222"},
-	 			{ id:223, pId:22, name:"叶子节点223"},
-	 			{ id:224, pId:22, name:"叶子节点224"},
-	 			{ id:23, pId:2, name:"父节点23 - 折叠"},
-	 			{ id:231, pId:23, name:"叶子节点231"},
-	 			{ id:232, pId:23, name:"叶子节点232"},
-	 			{ id:233, pId:23, name:"叶子节点233"},
-	 			{ id:234, pId:23, name:"叶子节点234"},
-	 			{ id:3, pId:0, name:"父节点3 - 没有子节点", isParent:true}
-	 		];
-
+	projectService.getTreeInfo().then(function(data){
+		$scope.zNodes = data;
+		$.fn.zTree.init($("#tree"), $scope.setting, $scope.zNodes);
+	});
+	
+	
 	function showIconForTree(treeId, treeNode) {
 		return !treeNode.isParent;
 	};
 	
-	$.fn.zTree.init($("#tree"), setting, zNodes);
 	
-	var treeNode1;
+
 	
+	
+	
+	$scope.treeNode1 = {};
 	function onClick(event, treeId, treeNode, clickFlag) {
+		var cdata = null;
 		var zTree = $.fn.zTree.getZTreeObj("tree");
 		treeNode1 = treeNode;
 		zTree.expandNode(treeNode);
-		console.log(treeNode);
+		$scope.treeNode1 = treeNode;
 		$scope.message = treeNode.name;
-//		console.log(event.target);
-		$scope.$apply(function () {
-//	    	$scope.ids = [{id:'1',value:'1'},{id:'2',value:'2'}];
-			$scope.ids = [1,2,3];
-	    });
+		var obj = event.target;
+		$(obj).css("font-weight","bold");
+		var promise = companyServer.getCompanyInfos();
+//		promise.then(function(data){
+//			cdata = data.data;
+//		});
+		companyServer.getCompanyInfos().then(function(data){
+			cdata = data.data;
+		});
+		while(true){
+			if(cdata!=null){
+				break;
+			}
+		}
+		$scope.$apply(function(){
+			console.log(cdata);
+			$scope.trees = cdata;
+		})
 		    
 	}	
 	
 	var newCount = 1;
 	$scope.addNode = function(){
-		var zTree = $.fn.zTree.getZTreeObj("tree");
-		zTree.addNodes(treeNode1, {id:(100 + newCount), pId:treeNode1.id, name:"new node" + (newCount++)});
+		if($scope.treeNode1==null){
+			alert("请选择组织！！");
+			return;
+		}
+		$scope.tree.fid = treeNode1.descId;
+		if(treeNode1.desc=="1"){
+			if($scope.tree.name==null||$scope.tree.name==""){
+				alert("请输入名称");
+				return;
+			}
+			companyServer.addCompanyInfo($scope.tree).then(function(data){
+				if(data.state){
+					$("#myclose").click();
+					var zTree = $.fn.zTree.getZTreeObj("tree");
+					zTree.addNodes($scope.treeNode1, {id:(100 + newCount), pId:treeNode1.id, name:$scope.tree.name,desc:$scope.treeNode1.desc+1,descId:data.id});
+				}else{
+					alert("data.message");
+				}
+			});
+		}
+		
 	}
 	
 });

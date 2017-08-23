@@ -53,6 +53,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	    	url:'/settings',
 	    	templateUrl:'html/table.html'
 	    })
+	    .state('tree',{
+	    	url:'/tree',
+	    	templateUrl:'html/tree/general.html',
+	    	controller:'treeCtrl'
+	    })
 	    
         
 });

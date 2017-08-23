@@ -24,6 +24,8 @@
     <link href="vendors/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
     <link href="vendors/daterangepicker.css" rel="stylesheet">
+    
+    <link href="css/zTreeStyle/zTreeStyle.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="build/css/custom.min.css" rel="stylesheet">
@@ -67,7 +69,7 @@
                     <ul class="nav child_menu">
                       <li><a ui-sref="index">Dashboard</a></li>
                       <li><a ui-sref="index2">Dashboard2</a></li>
-                      <li><a ui-sref="index3">Dashboard3</a></li>
+                      <li><a ui-sref="tree">tree</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-edit"></i> 实时监控 <span class="fa fa-chevron-down"></span></a>
@@ -300,6 +302,10 @@
 
     <!-- jQuery -->
     <script src="vendors/js/jquery.min.js"></script>
+    
+    <script src="js/jquery.ztree.all-3.5.min.js"></script>
+    <script src="js/jquery.ztree.core-3.5.min.js"></script>
+    
     <!-- Bootstrap -->
     <script src="vendors/js/bootstrap.min.js"></script>
     <!-- FastClick -->
@@ -341,6 +347,10 @@
     
     <script src="controller/user/UserCtrl.js"></script>
     <script src="server/user/UserServer.js"></script>
+    
+    <script src="controller/tree/treeCtrl.js"></script>
+    <script src="server/project/ProjectServer.js"></script>
+    <script src="server/company/CompanyServer.js"></script>
     
     <script>
 	 // document.domain = "caibaojian.com";

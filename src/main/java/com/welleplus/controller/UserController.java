@@ -15,7 +15,7 @@ public class UserController {
 	@Resource
 	private UserServer userServer;
 	
-	@RequestMapping("getinfos.ll")
+	@RequestMapping("getinfos.do")
 	@ResponseBody
 	public Result getInfos(){
 		Result result = new Result();

@@ -1,7 +1,7 @@
 app.service('userServer',function($http,$q){
 	this.getUserInfos = function(){
 		var deferred = $q.defer();
-		$http.get("/welleplus/user/getinfos.ll").success(function(data){
+		$http.get("/welleplus/user/getinfos.do").success(function(data){
 			deferred.resolve(data);
 		}).error(function(){
 			deferred.reject("查询失败");

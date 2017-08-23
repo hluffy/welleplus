@@ -1,5 +1,7 @@
 package com.welleplus.entity;
 
+import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -7,11 +9,15 @@ import java.util.Date;
  * @Description:二级机构信息
  * @Date: Created in 2017/8/22 10:04
  */
-public class Company {
+public class Company implements Serializable{
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = -262249609515039776L;
+	/**
      * 二级机构信息id
      */
-    private int id;
+    private Long id;
     /**
      * 二级机构名称
      */
@@ -19,7 +25,7 @@ public class Company {
     /**
      * 二级机构联系电话
      */
-    private String phoneNumber;
+    private String phonenumber;
     /**
      * 二级机构邮箱
      */
@@ -31,7 +37,7 @@ public class Company {
     /**
      * 二级机构信息添加时间
      */
-    private Date creatDate;
+    private Timestamp creatdate;
     /**
      * 二级机构级别字段
      */
@@ -49,11 +55,11 @@ public class Company {
      */
     private int fid;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -66,11 +72,11 @@ public class Company {
     }
 
     public String getPhoneNumber() {
-        return phoneNumber;
+        return phonenumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhoneNumber(String phonenumber) {
+        this.phonenumber = phonenumber;
     }
 
     public String getEmail() {
@@ -89,12 +95,12 @@ public class Company {
         this.address = address;
     }
 
-    public Date getCreatDate() {
-        return creatDate;
+    public Timestamp getCreatdate() {
+        return creatdate;
     }
 
-    public void setCreatDate(Date creatDate) {
-        this.creatDate = creatDate;
+    public void setCreatDate(Timestamp creatdate) {
+        this.creatdate = creatdate;
     }
 
     public String getGrade() {
@@ -129,19 +135,4 @@ public class Company {
         this.fid = fid;
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
-        return "Company{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", email='" + email + '\'' +
-                ", address='" + address + '\'' +
-                ", creatDate=" + creatDate +
-                ", grade='" + grade + '\'' +
-                ", type1='" + type1 + '\'' +
-                ", type2='" + type2 + '\'' +
-                ", fid=" + fid +
-                '}';
-    }
 }

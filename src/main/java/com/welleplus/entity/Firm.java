@@ -1,5 +1,6 @@
 package com.welleplus.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -7,8 +8,12 @@ import java.util.Date;
  * @Description:一级机构信息
  * @Date: Created in 2017/8/22 11:15
  */
-public class Firm {
+public class Firm implements Serializable{
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 7367259690526485009L;
+	/**
      * 一级机构id
      */
     private int id;
