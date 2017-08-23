@@ -1,4 +1,4 @@
-package com.wellplus.helmet.dao.model;
+package com.welleplus.entity;
 
 /**
  * @author: David
