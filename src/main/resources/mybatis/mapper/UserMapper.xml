@@ -14,7 +14,35 @@
 	</select>
 	
     <insert id="addUserInfo" parameterType="com.welleplus.entity.UserInfo" useGeneratedKeys="true" keyProperty="id">
-        insert into t_user(userName,password,sex,role,phonenumber,email,name,creatdate) values(#{userName},#{password},#{sex},#{role},#{phonenumber},#{email},#{name},#{creatdate});
+        insert into t_user(userName,password,sex,role,phonenumber,email,name,creatdate,rid) values(#{userName},#{password},#{sex},#{role},#{phonenumber},#{email},#{name},#{creatdate},#{rid});
     </insert>
+    
+    <select id="getUserInfo" parameterType="com.welleplus.entity.UserInfo" resultType="com.welleplus.entity.UserInfo">
+        select id,userName,password,IF(sex='0','女',IF(sex='1','男','未知')) as sex,role,phonenumber,email,name,DATE_FORMAT(creatdate,'%Y-%m-%d %H:%i:%s') as creatdate,rid from t_user
+        <where>
+            <if test="userName!=null and userName!=''">
+                and userName = #{userName}
+            </if>
+            <if test="password!=null and password!=''">
+                and password = #{password}
+            </if>
+            <if test="role!=null and role!=''">
+                and role = #{role}
+            </if>
+            <if test="phonenumber!=null and phonenumber!=''">
+                and phonenumber = #{phonenumber}
+            </if>
+            <if test="email!=null and email!=''">
+                and email = #{email}
+            </if>
+            <if test="name !=null and name!=''">
+                and name = #{name}
+            </if>
+            <if test="rid!=null and rid!=''">
+                and rid = #{rid}
+            </if>
+        </where>
+        order by creatdate desc
+    </select>
 
 </mapper>

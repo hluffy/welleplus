@@ -1,6 +1,7 @@
 package com.welleplus.controller;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -38,10 +39,11 @@ public class UserController {
 	
 	@RequestMapping("addinfo.do")
 	@ResponseBody
-	@Transactional
-	public Result addUserInfo(@RequestBody UserInfo info){
+	@Transactional(value="transactionManager",rollbackFor=java.lang.Exception.class)
+	public Result addUserInfo(@RequestBody UserInfo info) throws Exception{
 		Result result = new Result();
-		info.setCreatdate(new Timestamp(System.currentTimeMillis()));
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		info.setCreatdate(df.format(new Timestamp(System.currentTimeMillis())));
 		info.setPassword(Md5Util.md5String(info.getPassword()));
 //		if(info.getRole().equals(Role.PROMANAG.getName())){
 //			info.setRole(String.valueOf(Role.PROMANAG.getValue()));
@@ -69,6 +71,14 @@ public class UserController {
 				
 			}
 		}
+		return result;
+	}
+	
+	@RequestMapping("getinfo.do")
+	@ResponseBody
+	public Result getUserInfo(@RequestBody UserInfo info){
+		Result result = new Result();
+		result = userServer.getInfo(info);
 		return result;
 	}
 

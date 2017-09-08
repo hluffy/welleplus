@@ -4,6 +4,6 @@ import com.welleplus.entity.Correlation;
 import com.welleplus.result.Result;
 
 public interface CorrelationServer {
-	Result addCorrelationInfo(Correlation info);
+	Result addCorrelationInfo(Correlation info) throws Exception;
 
 }

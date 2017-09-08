@@ -36,4 +36,20 @@ app.service('userServer',function($http,$q){
 		
 		return deferred.promise;
 	}
+	
+	this.getUserInfo = function(user){
+		var deferred = $q.defer();
+		$http({
+			method:"post",
+			url:"/welleplus/user/getinfo.do",
+			data:user,
+			dataType:"json"
+		}).success(function(data){
+			deferred.resolve(data);
+		}).error(function(){
+			deferred.reject("查询失败");
+		});
+		
+		return deferred.promise;
+	}
 });

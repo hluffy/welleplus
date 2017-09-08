@@ -68,13 +68,23 @@
 	                    		<thead>
 			                        <tr>
 			                          <th>序号</th>
-			                          <th>名称</th>
+			                          <th>用户名</th>
+			                          <th>电话号码</th>
+			                          <th>性别</th>
+			                          <th>邮箱</th>
+			                          <th>姓名</th>
+			                          <th>创建时间</th>
 			                        </tr>
 			                      </thead>
 			                      <tbody>
-			                      	<tr ng-repeat="t in trees">
+			                      	<tr ng-repeat="t in userinfos">
 			                      		<td>{{$index+1}}</td>
+			                      		<td>{{t.userName}}</td>
+			                      		<td>{{t.phonenumber}}</td>
+			                      		<td>{{t.sex}}</td>
+			                      		<td>{{t.email}}</td>
 			                      		<td>{{t.name}}</td>
+			                      		<td>{{t.creatdate}}</td>
 			                      	</tr>
 			                      </tbody>
 	                    	</table>
@@ -149,7 +159,7 @@
 					                    <br />
 					                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
 					                    	
-					                      <input hidden="true" ng-model="user.role">
+<!-- 					                      <input hidden="true" ng-model="user.role"> -->
 					
 					                      <div class="form-group">
 					                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">用户名 <span class="required">*</span>
@@ -241,7 +251,7 @@
 					                  </div>
 								</div>
 								<div class="modal-footer">
-									<button type="button" class="btn btn-default" data-dismiss="modal" id="myclose">关闭
+									<button type="button" class="btn btn-default" data-dismiss="modal" id="userclose">关闭
 									</button>
 									<button type="button" class="btn btn-primary" ng-click="addUser()">
 										提交

@@ -5,6 +5,7 @@ import com.welleplus.result.Result;
 
 public interface UserServer {
 	Result getInfos();
-	Result addUserInfo(UserInfo info);
+	Result addUserInfo(UserInfo info) throws Exception;
+	Result getInfo(UserInfo info);
 
 }

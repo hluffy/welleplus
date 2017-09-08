@@ -12,15 +12,17 @@ public class UserInfo implements Serializable{
 	private Long id;
 	private String userName;
 	private String password;
-	private Integer sex;
+	private String sex;
 	private String role;
 	private String phonenumber;
 	private String email;
 	private String name;
-	private Timestamp creatdate;
+	private String creatdate;
+	private Long rid;
 	
 	private List<Long> ids;//当前用户管理的下级组织id
 	private Long grade;
+	
 	
 	
 	public Long getId() {
@@ -41,10 +43,10 @@ public class UserInfo implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Integer getSex() {
+	public String getSex() {
 		return sex;
 	}
-	public void setSex(Integer sex) {
+	public void setSex(String sex) {
 		this.sex = sex;
 	}
 	public String getPhonenumber() {
@@ -65,10 +67,10 @@ public class UserInfo implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Timestamp getCreatdate() {
+	public String getCreatdate() {
 		return creatdate;
 	}
-	public void setCreatdate(Timestamp creatdate) {
+	public void setCreatdate(String creatdate) {
 		this.creatdate = creatdate;
 	}
 	public String getRole() {
@@ -88,6 +90,12 @@ public class UserInfo implements Serializable{
 	}
 	public void setGrade(Long grade) {
 		this.grade = grade;
+	}
+	public Long getRid() {
+		return rid;
+	}
+	public void setRid(Long rid) {
+		this.rid = rid;
 	}
 	
 

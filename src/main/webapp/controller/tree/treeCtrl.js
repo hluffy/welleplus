@@ -1,6 +1,7 @@
 app.controller('treeCtrl',function($scope,projectService,companyServer,sectionServer,userServer){
 	$scope.tree = {};
 	$scope.user = {};
+	$scope.userquery={};
 	$scope.user.sex = "1";
 	$scope.user.role="";
 	$scope.message;
@@ -90,7 +91,16 @@ app.controller('treeCtrl',function($scope,projectService,companyServer,sectionSe
 			$scope.user.grade = $scope.myMenu[0].grade;
 		});
 		
+		$scope.userquery.role = treeNode.desc;
+		$scope.userquery.rid = treeNode.descId;
+		//获取人员信息
+		userServer.getUserInfo($scope.userquery).then(function(data){
+			console.log(data);
+			$scope.userinfos = data.data;
+		});
+		
 		$scope.user.role = treeNode.desc;
+		$scope.user.rid = treeNode.descId;
 		    
 	}	
 	
@@ -176,10 +186,15 @@ app.controller('treeCtrl',function($scope,projectService,companyServer,sectionSe
 		$scope.user.ids = $scope.selected;
 		userServer.addUserInfo($scope.user).then(function(data){
 			if(data.state){
-				$("#myclose").click();
 				alert(data.message);
+				$("#userclose").click();
+				$scope.user.userName="";
+				$scope.user.password="";
+				$scope.user.phonenumber="";
+				$scope.user.name="";
+				$scope.user.email="";
 			}else{
-				alert(data.message);
+				alert(data);
 			}
 		});
 	}

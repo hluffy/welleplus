@@ -26,19 +26,29 @@ public class UserServerImpl implements UserServer{
 		return result;
 	}
 
-	public Result addUserInfo(UserInfo info) {
+	public Result addUserInfo(UserInfo info) throws Exception {
+		// TODO Auto-generated method stub
+		Result result = new Result();
+		int id = userDao.addUserInfo(info);
+		result.setId(info.getId());
+		result.setData(info);
+		result.setState(true);
+		result.setMessage("添加成功");
+		return result;
+	}
+
+	public Result getInfo(UserInfo info) {
 		// TODO Auto-generated method stub
 		Result result = new Result();
 		try {
-			int id = userDao.addUserInfo(info);
-			result.setId(info.getId());
-			result.setData(info);
+			List<UserInfo> infos = userDao.getUserInfo(info);
+			result.setData(infos);
 			result.setState(true);
-			result.setMessage("添加成功");
+			result.setMessage("查询成功");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			result.setState(false);
-			result.setMessage("添加失败");
+			result.setMessage("查询失败");
 			e.printStackTrace();
 		}
 		return result;
