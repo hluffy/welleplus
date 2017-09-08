@@ -1,11 +1,12 @@
 package com.welleplus.entity;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
  * @author: David
- * @Description:四级机构信息
+ * @Description:四级结构 项目组
  * @Date: Created in 2017/8/22 11:43
  */
 public class Project implements Serializable{
@@ -16,7 +17,7 @@ public class Project implements Serializable{
 	/**
      * 四级机构信息id
      */
-    private int id;
+    private Long id;
     /**
      * 四级机构名称
      */
@@ -24,7 +25,7 @@ public class Project implements Serializable{
     /**
      * 四级机构信息添加时间
      */
-    private Date creatDate;
+    private Timestamp creatdate;
     /**
      * 四级机构地址
      */
@@ -46,11 +47,11 @@ public class Project implements Serializable{
      */
     private int sid;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -62,12 +63,12 @@ public class Project implements Serializable{
         this.name = name;
     }
 
-    public Date getCreatDate() {
-        return creatDate;
+    public Timestamp getCreatDate() {
+        return creatdate;
     }
 
-    public void setCreatDate(Date creatDate) {
-        this.creatDate = creatDate;
+    public void setCreatDate(Timestamp creatdate) {
+        this.creatdate = creatdate;
     }
 
     public String getAddress() {
@@ -110,17 +111,4 @@ public class Project implements Serializable{
         this.sid = sid;
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
-        return "Project{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", creatDate=" + creatDate +
-                ", address='" + address + '\'' +
-                ", grade='" + grade + '\'' +
-                ", type1='" + type1 + '\'' +
-                ", type2='" + type2 + '\'' +
-                ", sid=" + sid +
-                '}';
-    }
 }

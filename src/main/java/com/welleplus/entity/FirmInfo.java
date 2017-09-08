@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 
 public class FirmInfo implements Serializable{
 	/**
-	 * 
+	 * 企业信息
 	 */
 	private static final long serialVersionUID = -4144510755156695530L;
 	private Long id;

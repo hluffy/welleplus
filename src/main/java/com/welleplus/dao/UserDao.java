@@ -6,5 +6,7 @@ import com.welleplus.entity.UserInfo;
 
 public interface UserDao {
 	List<UserInfo> getUserInfos();
+	
+	int addUserInfo(UserInfo info) throws Exception;
 
 }

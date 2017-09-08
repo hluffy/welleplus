@@ -32,6 +32,11 @@
     <script src="js/angular.min.js"></script>
   	<script src="js/angular-ui-router.min.js"></script>
   	<script src="index.js"></script>
+  	<style>
+  		a{
+  			cursor: pointer
+  		}
+  	</style>
   </head>
 
 <!--   <body class="nav-md" oncontextmenu=self.event.returnValue=false> -->
@@ -284,7 +289,7 @@
         <!-- /top navigation -->
         
         
-		<div class="right_col" style="height: 100%" ui-view="">
+		<div class="right_col" style="height: 100%;min-height: 670px" ui-view="">
 			
 		</div>
 
@@ -351,6 +356,7 @@
     <script src="controller/tree/treeCtrl.js"></script>
     <script src="server/project/ProjectServer.js"></script>
     <script src="server/company/CompanyServer.js"></script>
+    <script src="server/section/SectionServer.js"></script>
     
     <script>
 	 // document.domain = "caibaojian.com";

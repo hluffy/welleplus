@@ -12,5 +12,9 @@
 		*
 		from t_user
 	</select>
+	
+    <insert id="addUserInfo" parameterType="com.welleplus.entity.UserInfo" useGeneratedKeys="true" keyProperty="id">
+        insert into t_user(userName,password,sex,role,phonenumber,email,name,creatdate) values(#{userName},#{password},#{sex},#{role},#{phonenumber},#{email},#{name},#{creatdate});
+    </insert>
 
 </mapper>

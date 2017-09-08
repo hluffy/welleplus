@@ -6,7 +6,7 @@ import java.util.Date;
 
 /**
  * @author: David
- * @Description:二级机构信息
+ * @Description:二级机构信息 公司信息
  * @Date: Created in 2017/8/22 10:04
  */
 public class Company implements Serializable{

@@ -4,4 +4,6 @@ app.controller('userCtrl',function($scope,userServer){
 //		console.log(data);
 		$scope.users = data.data;
 	});
+	
+	
 });

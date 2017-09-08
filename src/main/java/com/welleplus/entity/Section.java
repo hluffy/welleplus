@@ -1,11 +1,12 @@
 package com.welleplus.entity;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
  * @author: David
- * @Description:三级机构信息
+ * @Description:三级结构 部门信息
  * @Date: Created in 2017/8/23 10:05
  */
 public class Section implements Serializable{
@@ -16,7 +17,7 @@ public class Section implements Serializable{
 	/**
      * 三级机构信息id
      */
-    private int id;
+    private Long id;
     /**
      * 三级机构名称
      */
@@ -24,7 +25,7 @@ public class Section implements Serializable{
     /**
      * 添加机构信息时间
      */
-    private Date creatDate;
+    private Timestamp creatdate;
     /**
      * 三级机构地址
      */
@@ -46,11 +47,11 @@ public class Section implements Serializable{
      */
     private String cid;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -62,12 +63,12 @@ public class Section implements Serializable{
         this.name = name;
     }
 
-    public Date getCreatDate() {
-        return creatDate;
+    public Timestamp getCreatdate() {
+        return creatdate;
     }
 
-    public void setCreatDate(Date creatDate) {
-        this.creatDate = creatDate;
+    public void setCreatDate(Timestamp creatdate) {
+        this.creatdate = creatdate;
     }
 
     public String getAddress() {
@@ -110,17 +111,4 @@ public class Section implements Serializable{
         this.cid = cid;
     }
 
-    @Override
-    public String toString() {
-        return "Section{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", creatDate=" + creatDate +
-                ", address='" + address + '\'' +
-                ", grade='" + grade + '\'' +
-                ", type1='" + type1 + '\'' +
-                ", type2='" + type2 + '\'' +
-                ", cid='" + cid + '\'' +
-                '}';
-    }
 }

@@ -1,65 +1,51 @@
 package com.welleplus.entity;
 
+import java.io.Serializable;
+
 /**
  * @author: David
  * @Description:
  * @Date: Created in 2017/8/23 10:41
  */
-public class Correlation {
-    private int id;
-    private int uid;
-    private int pmid;
-    private int grade;
-    private int gradeid;
+public class Correlation implements Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7123657757804056490L;
+	private Long id;
+    private Long uid;
+    private Long pmid;
+    private Long grade;
+    private Long gradeid;
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public Long getUid() {
+		return uid;
+	}
+	public void setUid(Long uid) {
+		this.uid = uid;
+	}
+	public Long getPmid() {
+		return pmid;
+	}
+	public void setPmid(Long pmid) {
+		this.pmid = pmid;
+	}
+	public Long getGrade() {
+		return grade;
+	}
+	public void setGrade(Long grade) {
+		this.grade = grade;
+	}
+	public Long getGradeid() {
+		return gradeid;
+	}
+	public void setGradeid(Long gradeid) {
+		this.gradeid = gradeid;
+	}
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getUid() {
-        return uid;
-    }
-
-    public void setUid(int uid) {
-        this.uid = uid;
-    }
-
-    public int getPmid() {
-        return pmid;
-    }
-
-    public void setPmid(int pmid) {
-        this.pmid = pmid;
-    }
-
-    public int getGrade() {
-        return grade;
-    }
-
-    public void setGrade(int grade) {
-        this.grade = grade;
-    }
-
-    public int getGradeid() {
-        return gradeid;
-    }
-
-    public void setGradeid(int gradeid) {
-        this.gradeid = gradeid;
-    }
-
-    @java.lang.Override
-    public java.lang.String toString() {
-        return "Correlation{" +
-                "id=" + id +
-                ", uid=" + uid +
-                ", pmid=" + pmid +
-                ", grade=" + grade +
-                ", gradeid=" + gradeid +
-                '}';
-    }
 }

@@ -13,12 +13,12 @@ public class Md5Util{
 		System.out.println(md5String(str));
 	}
 	
-	public static String md5String(String str) throws NoSuchAlgorithmException{
-		MessageDigest md5 = MessageDigest.getInstance("MD5");
-		BASE64Encoder base64 = new BASE64Encoder();
+	public static String md5String(String str){
 		try {
+			MessageDigest md5 = MessageDigest.getInstance("MD5");
+			BASE64Encoder base64 = new BASE64Encoder();
 			str = base64.encode(md5.digest(str.getBytes("utf-8")));
-		} catch (UnsupportedEncodingException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

@@ -2,26 +2,31 @@ package com.welleplus.entity;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.List;
 
 public class UserInfo implements Serializable{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 6175233045321713805L;
-	private Integer id;
+	private Long id;
 	private String userName;
 	private String password;
 	private Integer sex;
 	private String role;
 	private String phonenumber;
 	private String email;
-	private String state;
 	private String name;
 	private Timestamp creatdate;
-	public Integer getId() {
+	
+	private List<Long> ids;//当前用户管理的下级组织id
+	private Long grade;
+	
+	
+	public Long getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getUserName() {
@@ -54,12 +59,6 @@ public class UserInfo implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getState() {
-		return state;
-	}
-	public void setState(String state) {
-		this.state = state;
-	}
 	public String getName() {
 		return name;
 	}
@@ -77,6 +76,18 @@ public class UserInfo implements Serializable{
 	}
 	public void setRole(String role) {
 		this.role = role;
+	}
+	public List<Long> getIds() {
+		return ids;
+	}
+	public void setIds(List<Long> ids) {
+		this.ids = ids;
+	}
+	public Long getGrade() {
+		return grade;
+	}
+	public void setGrade(Long grade) {
+		this.grade = grade;
 	}
 	
 
