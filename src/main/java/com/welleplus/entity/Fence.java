@@ -1,17 +1,23 @@
 package com.welleplus.entity;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author: David
  * @Description:电子围栏及围栏报警设置信息
  * @Date: Created in 2017/8/22 10:34
  */
-public class Fence {
+public class Fence implements Serializable{
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 5767966534925131036L;
+	/**
      * 电子围栏及其设置信息id
      */
-    private int id;
+    private Long id;
     /**
      * 围栏名称
      */
@@ -67,11 +73,11 @@ public class Fence {
     /**
      * 围栏信息添加时间
      */
-    private Date creatDate;
+    private String creatDate;
     /**
      * 围栏信息修改时间
      */
-    private Date upDate;
+    private String updateDate;
     /**
      * 围栏报警设置类型
      */
@@ -79,11 +85,11 @@ public class Fence {
     /**
      * 围栏报警设置开启时间
      */
-    private Date startDate;
+    private String startDate;
     /**
      * 围栏报警设置结束时间
      */
-    private Date endDate;
+    private String endDate;
     /**
      * 围栏所属机构级别
      */
@@ -99,13 +105,17 @@ public class Fence {
     /**
      * 围栏所属上级id
      */
-    private int pid;
+    private Long pid;
+    
+    
+    private List<String> lnglat;
+    private List<Long> ids;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -213,20 +223,20 @@ public class Fence {
         this.state = state;
     }
 
-    public Date getCreatDate() {
+    public String getCreatDate() {
         return creatDate;
     }
 
-    public void setCreatDate(Date creatDate) {
+    public void setCreatDate(String creatDate) {
         this.creatDate = creatDate;
     }
 
-    public Date getUpDate() {
-        return upDate;
+    public String getUpdateDate() {
+        return updateDate;
     }
 
-    public void setUpDate(Date upDate) {
-        this.upDate = upDate;
+    public void setUpdateDate(String updateDate) {
+        this.updateDate = updateDate;
     }
 
     public String getWarningType() {
@@ -237,19 +247,19 @@ public class Fence {
         this.warningType = warningType;
     }
 
-    public Date getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 
@@ -277,40 +287,29 @@ public class Fence {
         this.type2 = type2;
     }
 
-    public int getPid() {
+    public Long getPid() {
         return pid;
     }
 
-    public void setPid(int pid) {
+    public void setPid(Long pid) {
         this.pid = pid;
     }
+    
 
-    @java.lang.Override
-    public java.lang.String toString() {
-        return "Fence{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", Xloc='" + Xloc + '\'' +
-                ", Yloc='" + Yloc + '\'' +
-                ", Xloc1='" + Xloc1 + '\'' +
-                ", Yloc1='" + Yloc1 + '\'' +
-                ", Xloc2='" + Xloc2 + '\'' +
-                ", Yloc2='" + Yloc2 + '\'' +
-                ", Xloc3='" + Xloc3 + '\'' +
-                ", Yloc3='" + Yloc3 + '\'' +
-                ", Xloc4='" + Xloc4 + '\'' +
-                ", Yloc4='" + Yloc4 + '\'' +
-                ", radius='" + radius + '\'' +
-                ", state='" + state + '\'' +
-                ", creatDate=" + creatDate +
-                ", upDate=" + upDate +
-                ", warningType='" + warningType + '\'' +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
-                ", grade='" + grade + '\'' +
-                ", type1='" + type1 + '\'' +
-                ", type2='" + type2 + '\'' +
-                ", pid=" + pid +
-                '}';
-    }
+    public List<String> getLnglat() {
+		return lnglat;
+	}
+
+	public void setLnglat(List<String> lnglat) {
+		this.lnglat = lnglat;
+	}
+
+	public List<Long> getIds() {
+		return ids;
+	}
+
+	public void setIds(List<Long> ids) {
+		this.ids = ids;
+	}
+
 }

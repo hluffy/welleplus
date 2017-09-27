@@ -12,5 +12,17 @@
 		*
 		from t_firm where id = #{id}
 	</select>
+	
+    <select id="getFirmInfos" resultType="com.welleplus.entity.FirmInfo">
+        select * from t_firm
+    </select>
+    
+    <update id="updateFirmName" parameterType="com.welleplus.entity.FirmInfo">
+        update t_firm set name = #{name} where id = #{id}
+    </update>
+    
+    <delete id="deleteFirmInfo" parameterType="Long">
+        delete from t_firm where id = #{id}
+    </delete>
 
 </mapper>

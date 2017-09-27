@@ -1,5 +1,6 @@
 package com.welleplus.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -7,8 +8,12 @@ import java.util.Date;
  * @Description: 报警信息Correlation
  * @Date: Created in 2017/8/23 10:32
  */
-public class Warning {
+public class Warning implements Serializable{
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8155325926937005463L;
+	/**
      * 设备报警信息id
      */
     private int id;
@@ -23,19 +28,25 @@ public class Warning {
     /**
      * 报警类型
      */
-    private String waringType;
+    private String warningType;
     /**
      * 报警时间
      */
     private Date watchTime;
     /**
-     * 报警信息预留字段1
+     * 围栏id
      */
-    private String type1;
+    private Long fid;
     /**
      * 报警信息预留字段2
      */
     private String type2;
+    
+    private UserInfo user;
+    private Fence fence;
+    
+    private String startDate;
+    private String endDate;
 
     public int getId() {
         return id;
@@ -61,12 +72,12 @@ public class Warning {
         this.imei = imei;
     }
 
-    public String getWaringType() {
-        return waringType;
+    public String getWarningType() {
+        return warningType;
     }
 
-    public void setWaringType(String waringType) {
-        this.waringType = waringType;
+    public void setWarningType(String warningType) {
+        this.warningType = warningType;
     }
 
     public Date getWatchTime() {
@@ -77,12 +88,12 @@ public class Warning {
         this.watchTime = watchTime;
     }
 
-    public String getType1() {
-        return type1;
+    public Long getFid() {
+        return fid;
     }
 
-    public void setType1(String type1) {
-        this.type1 = type1;
+    public void setFid(Long fid) {
+        this.fid = fid;
     }
 
     public String getType2() {
@@ -93,16 +104,37 @@ public class Warning {
         this.type2 = type2;
     }
 
-    @Override
-    public String toString() {
-        return "Warning{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", imei='" + imei + '\'' +
-                ", waringType='" + waringType + '\'' +
-                ", watchTime=" + watchTime +
-                ", type1='" + type1 + '\'' +
-                ", type2='" + type2 + '\'' +
-                '}';
-    }
+	public UserInfo getUser() {
+		return user;
+	}
+
+	public void setUser(UserInfo user) {
+		this.user = user;
+	}
+
+	public Fence getFence() {
+		return fence;
+	}
+
+	public void setFence(Fence fence) {
+		this.fence = fence;
+	}
+
+	public String getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+
+	public String getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
+
+
 }

@@ -7,6 +7,9 @@ public class TreeInfo {
 	private boolean open;
 	private Integer desc;
 	private Long descId;
+	private String icon;
+	private String iconOpen;
+	private String iconClose;
 	public Integer getId() {
 		return id;
 	}
@@ -42,6 +45,24 @@ public class TreeInfo {
 	}
 	public void setDescId(Long descId) {
 		this.descId = descId;
+	}
+	public String getIcon() {
+		return icon;
+	}
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
+	public String getIconOpen() {
+		return iconOpen;
+	}
+	public void setIconOpen(String iconOpen) {
+		this.iconOpen = iconOpen;
+	}
+	public String getIconClose() {
+		return iconClose;
+	}
+	public void setIconClose(String iconClose) {
+		this.iconClose = iconClose;
 	}
 	
 

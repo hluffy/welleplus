@@ -14,5 +14,17 @@
     <select id="getCompanyInfo" parameterType="Long" resultType="com.welleplus.entity.Company">
         select * from t_company where fid = #{id}
     </select>
+    
+    <select id="getCompanyInfoForId" parameterType = "Long" resultType="com.welleplus.entity.Company">
+        select * from t_company where id = #{id}
+    </select>
+    
+    <update id="updateCompanyName" parameterType = "com.welleplus.entity.Company">
+        update t_company set name = #{name} where id = #{id}
+    </update>
+    
+    <delete id="deleteCompanyInfo" parameterType = "Long">
+        delete from t_company where id = #{id}
+    </delete>
 
 </mapper>

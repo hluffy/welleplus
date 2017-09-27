@@ -13,6 +13,18 @@ public class Equipment {
      */
     private int id;
     /**
+     * 参数
+     */
+    private String param;
+    /**
+     * 开始时间
+     */
+    private String startdate;
+    /**
+     * 结束时间
+     */
+    private String enddate;
+    /**
      * 设备入网编号
      */
     private String imei;
@@ -43,6 +55,30 @@ public class Equipment {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getParam() {
+        return param;
+    }
+
+    public void setParam(String param) {
+        this.param = param;
+    }
+
+    public String getStartdate() {
+        return startdate;
+    }
+
+    public void setStartdate(String startdate) {
+        this.startdate = startdate;
+    }
+
+    public String getEnddate() {
+        return enddate;
+    }
+
+    public void setEnddate(String enddate) {
+        this.enddate = enddate;
     }
 
     public String getImei() {
@@ -93,16 +129,4 @@ public class Equipment {
         this.feid = feid;
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
-        return "Equipment{" +
-                "id=" + id +
-                ", imei='" + imei + '\'' +
-                ", creatDate=" + creatDate +
-                ", upDate=" + upDate +
-                ", fid=" + fid +
-                ", uid=" + uid +
-                ", feid=" + feid +
-                '}';
-    }
 }

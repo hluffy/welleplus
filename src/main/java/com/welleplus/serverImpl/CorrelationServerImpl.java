@@ -1,5 +1,7 @@
 package com.welleplus.serverImpl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -21,6 +23,47 @@ public class CorrelationServerImpl implements CorrelationServer{
 		result.setId(info.getId());
 		result.setState(true);
 		result.setMessage("添加成功");
+		return result;
+	}
+
+	@Override
+	public Result getCorrelationInfo(Correlation info) {
+		// TODO Auto-generated method stub
+		Result result = new Result();
+		List<Correlation> infos = cDao.getCorrelationInfo(info);
+		result.setData(infos);
+		result.setState(true);
+		result.setMessage("查询成功");
+		return result;
+	}
+
+	@Override
+	public Result deleteCorrelationInfo(Long grade, Long gradeid) {
+		// TODO Auto-generated method stub
+		Result result = new Result();
+		Correlation info = new Correlation();
+		info.setGrade(grade);
+		info.setGradeid(gradeid);
+		try {
+			cDao.deleteCorrelationInfo(info);
+			result.setState(true);
+			result.setMessage("删除成功");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			result.setState(false);
+			result.setMessage("删除失败");
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	@Override
+	public Result deleteCorrelationInfoFromUid(Long uid) throws Exception {
+		// TODO Auto-generated method stub
+		Result result = new Result();
+		cDao.deleteCorrelationInfoFromUid(uid);
+		result.setState(true);
+		result.setMessage("删除成功");
 		return result;
 	}
 

@@ -53,7 +53,7 @@ public class Company implements Serializable{
     /**
      * 二级机构上级部门信息id
      */
-    private int fid;
+    private Long fid;
 
     public Long getId() {
         return id;
@@ -127,11 +127,11 @@ public class Company implements Serializable{
         this.type2 = type2;
     }
 
-    public int getFid() {
+    public Long getFid() {
         return fid;
     }
 
-    public void setFid(int fid) {
+    public void setFid(Long fid) {
         this.fid = fid;
     }
 

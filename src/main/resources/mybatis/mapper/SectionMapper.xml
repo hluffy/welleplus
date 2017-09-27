@@ -17,5 +17,21 @@
 	<select id="getSectionInfo" parameterType="Long" resultType="com.welleplus.entity.Section">
 	    select * from t_section where cid = #{id}
 	</select>
+	
+	<select id="getSectionInfoForId" parameterType="Long" resultType = "com.welleplus.entity.Section">
+	    select * from t_section where id = #{id}
+	</select>
+	
+	<select id="getSectionAsMap" parameterType="map" resultType = "com.welleplus.entity.Section">
+	    select * from t_section where id = #{id} and cid = #{cid}
+	</select>
+	
+	<update id="updateSectionName" parameterType = "com.welleplus.entity.Section">
+	    update t_section set name = #{name} where id = #{id}
+	</update>
+	
+	<delete id="deleteSectionInfo" parameterType = "Long">
+	    delete from t_section where id = #{id}
+	</delete>
 
 </mapper>

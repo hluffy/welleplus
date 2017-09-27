@@ -58,6 +58,60 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	    	templateUrl:'html/tree/user.html',
 	    	controller:'treeCtrl'
 	    })
-	    
-        
+        //跳转至历史轨迹页面
+        .state('history',{
+            url:'/history',
+            templateUrl:'html/map/history.html',
+            controller:'historyCtrl'
+        })
+        //
+        .state('location',{
+            url:'/location',
+            templateUrl:'html/map/location.html',
+            controller:'locationCtrl'
+        })
+        .state('ztree',{
+        	url:'/ztree',
+        	templateUrl:'html/edit.html'
+        })
+        .state('rfidMaxInfo',{
+            url:'/rfidMaxInfo',
+            templateUrl:'html/rfid/rfidMaxInfo.html',
+            controller:'rfidMaxCtrl'
+        })
+        .state('rfidHistoryInfo',{
+            url:'/rfidHistoryInfo',
+            templateUrl:'html/rfid/rfidHistoryInfo.html',
+            controller:'rfidHistoryCtrl'
+        })
+        .state('elepen',{
+        	url:'/elepen',
+        	templateUrl:'html/elepen/elepen.html',
+        	controller:'elepenCtrl'
+        })
+        .state('elepenshow',{
+        	url:'/elepenshow',
+        	templateUrl:'html/elepen/elepenshow.html',
+        	controller:'elepenshowCtrl'
+        })
+       	.state('app_one',{
+	    	url:'/statistics',
+	    	templateUrl:'html/app/statistics.html',
+	    	controller:'app_oneCtrl'
+	    })
+        .state('app_two',{
+	    	url:'/app_historical_attendance',
+	    	templateUrl:'html/app/app_historical_attendance.html',
+	    	controller:'app_twoCtrl'
+	    })
+	    .state('app_three',{
+	    	url:'/record',
+	    	templateUrl:'html/app/record.html',
+	    	controller:'app_threeCtrl'
+	    })
+	    .state('fencewarning',{
+	    	url:'/fencewarning',
+	    	templateUrl:'html/warning/fencewarning.html',
+	    	controller:'warningCtrl'
+	    })
 });

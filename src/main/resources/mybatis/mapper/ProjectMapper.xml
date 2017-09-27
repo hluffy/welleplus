@@ -14,5 +14,21 @@
 	<select id="getProjectInfo" parameterType="Long" resultType="com.welleplus.entity.Project">
 	    select * from t_project where sid = #{id}
 	</select>
+	
+	<select id="getProjectInfoForId" parameterType="Long" resultType="com.welleplus.entity.Project">
+	    select * from t_project where id = #{id}
+	</select>
+	
+	<select id="getProjectInfoAsMap" parameterType = "map" resultType = "com.welleplus.entity.Project">
+	    select * from t_project where id = #{id} and sid = #{sid}
+	</select>
+	
+	<update id="updateProjectName" parameterType = "com.welleplus.entity.Project">
+	    update t_project set name = #{name} where id = #{id}
+	</update>
+	
+	<delete id="deleteProjectInfo" parameterType = "Long">
+	    delete from t_project where id = #{id}
+	</delete>
 
 </mapper>

@@ -1,0 +1,51 @@
+<div style="float: left;width: 26%;height: 580px; background-color:#E0E0E0;">
+    <h1 style="color: #2C4257"align="center">历史轨迹</h1>
+    <dl style="position: relative;left: 75px;top: 15px;">
+        <dt>
+            <input type="text" placeholder="请输入姓名或电话" ng-model="map.param">
+        </dt>
+        <dt>&nbsp;</dt>
+        <dt>
+            <input type="text" placeholder="请输入起始时间" id="startdate" ng-model="map.startdate">
+        </dt>
+        <dt>&nbsp;</dt>
+        <dt>
+            <input type="text" placeholder="请输入结束时间" id="enddate" ng-model="map.enddate">
+        </dt>
+    </dl>
+    <dl style="position: relative;left: 163px;padding: 4px 2px 2px 4px;">
+        <dt>
+            <button style="border: solid 1px;border-radius: 5px;"
+                    align="center" ng-click="searchhistory()" id="searchhistory">
+                <!--<i class="layui-icon" style="font-size: 25px; color: #050206;">&#xe615;</i>-->
+                <div class="fa-hove col-md-3 col-sm-4 col-xs-12">
+                    <a  >
+                        <i class="fa fa-search" style="font-size: 25px;color: #050206;"></i>
+                    </a>
+                </div>
+            </button>
+        </dt>
+    </dl>
+    <div style="color: black;">
+    <dl align="center">
+        <dt>
+            姓名:&nbsp;<span>{{historys[0].userName}}</span>&nbsp;&nbsp;&nbsp;电话:&nbsp;<span>{{historys[0].phonenumber}}</span>
+        </dt>
+        <dt></dt>
+    </dl>
+    <dl align="center">
+        <dt>时间:&nbsp;<span>{{historys[0].watch_date}}</span></dt>
+        <dt>位置:&nbsp;<span>{{historys[0].address}}</span></dt>
+        <dt>设备类型:&nbsp;<span></span></dt>
+        <dt>定位方式:&nbsp;<span>{{historys[0].is_position}}</span></dt>
+    </dl>
+    <dl align="center">
+
+        <dt>时间:&nbsp;<span>{{historys[historys.length-1].watch_date}}</span></dt>
+        <dt>位置:&nbsp;<span>{{historys[historys.length-1].address}}</span></dt>
+        <dt>设备类型:&nbsp;<span></span></dt>
+        <dt>定位方式:&nbsp;<span>{{historys[historys.length-1].is_position}}</span></dt>
+    </dl>
+    </div>
+</div>
+<div id="container" ng-app="myMap" ng-controller="mapCtrl" style="height: 580px;width: 74%;float: left;position: relative;left: 0px;"></div>

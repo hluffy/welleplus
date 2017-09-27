@@ -1,6 +1,8 @@
 package com.welleplus.serverImpl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -45,6 +47,68 @@ public class ProjectServerImpl implements ProjectServer{
 			// TODO Auto-generated catch block
 			result.setState(false);
 			result.setMessage("查询失败");
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	@Override
+	public Result getProjectInfoForId(Long id) {
+		// TODO Auto-generated method stub
+		Result result = new Result();
+		Project info = projectDao.getProjectInfoForId(id);
+		result.setData(info);
+		result.setState(true);
+		result.setMessage("查询成功");
+		return result;
+	}
+
+	@Override
+	public Result getProjectInfoAsMap(Long id, Long sid) {
+		// TODO Auto-generated method stub
+		Result result = new Result();
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("id", id);
+		map.put("sid", sid);
+		Project info = projectDao.getProjectInfoAsMap(map);
+		result.setData(info);
+		result.setState(true);
+		result.setMessage("查询成功");
+		return result;
+	}
+
+	@Override
+	public Result updateProjectName(Long id, String name) {
+		// TODO Auto-generated method stub
+		Result result = new Result();
+		Project info = new Project();
+		info.setId(id);
+		info.setName(name);
+		try {
+			projectDao.updateProjectName(info);
+			result.setState(true);
+			result.setMessage("修改成功");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			result.setState(false);
+			result.setMessage("修改失败");
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	@Override
+	public Result deleteProjectInfo(Long id) {
+		// TODO Auto-generated method stub
+		Result result = new Result();
+		try {
+			projectDao.deleteProjectInfo(id);
+			result.setState(true);
+			result.setMessage("删除成功");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			result.setState(false);
+			result.setMessage("删除失败");
 			e.printStackTrace();
 		}
 		return result;

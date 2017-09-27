@@ -45,7 +45,7 @@ public class Section implements Serializable{
     /**
      * 三级机构关联的上级机构id
      */
-    private String cid;
+    private Long cid;
 
     public Long getId() {
         return id;
@@ -103,11 +103,11 @@ public class Section implements Serializable{
         this.type2 = type2;
     }
 
-    public String getCid() {
+    public Long getCid() {
         return cid;
     }
 
-    public void setCid(String cid) {
+    public void setCid(Long cid) {
         this.cid = cid;
     }
 

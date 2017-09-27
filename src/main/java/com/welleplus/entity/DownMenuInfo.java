@@ -10,6 +10,8 @@ public class DownMenuInfo {
 	private String name;
 	
 	private Long grade;
+	private Long count;
+	
 	public Long getId() {
 		return id;
 	}
@@ -27,6 +29,12 @@ public class DownMenuInfo {
 	}
 	public void setGrade(Long grade) {
 		this.grade = grade;
+	}
+	public Long getCount() {
+		return count;
+	}
+	public void setCount(Long count) {
+		this.count = count;
 	}
 	
 	

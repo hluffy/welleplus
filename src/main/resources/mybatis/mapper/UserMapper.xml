@@ -12,13 +12,19 @@
 		*
 		from t_user
 	</select>
-	
+
     <insert id="addUserInfo" parameterType="com.welleplus.entity.UserInfo" useGeneratedKeys="true" keyProperty="id">
-        insert into t_user(userName,password,sex,role,phonenumber,email,name,creatdate,rid) values(#{userName},#{password},#{sex},#{role},#{phonenumber},#{email},#{name},#{creatdate},#{rid});
+        insert into t_user(userName,password,sex,role,phonenumber,email,name,creatdate,rid,worktype,equiptype,equipnumber,equipstate,getdate) 
+        values(#{userName},#{password},#{sex},#{role},#{phonenumber},#{email},#{name},#{creatdate},#{rid},#{worktype},#{equiptype},#{equipnumber},#{equipstate},#{getdate});
     </insert>
     
+    <select id="getUserInfoForId" parameterType = "Long" resultType = "com.welleplus.entity.UserInfo">
+        select * from t_user where id = #{id}
+    </select>
+
     <select id="getUserInfo" parameterType="com.welleplus.entity.UserInfo" resultType="com.welleplus.entity.UserInfo">
-        select id,userName,password,IF(sex='0','女',IF(sex='1','男','未知')) as sex,role,phonenumber,email,name,DATE_FORMAT(creatdate,'%Y-%m-%d %H:%i:%s') as creatdate,rid from t_user
+        select id,userName,password,IF(sex='0','女',IF(sex='1','男','未知')) as
+        sex,role,phonenumber,email,name,DATE_FORMAT(creatdate,'%Y-%m-%d %H:%i:%s') as creatdate,rid,worktype,equiptype,equipnumber,equipstate,DATE_FORMAT(getdate,'%Y-%m-%d %H:%i:%s') as getdate from t_user
         <where>
             <if test="userName!=null and userName!=''">
                 and userName = #{userName}
@@ -43,6 +49,26 @@
             </if>
         </where>
         order by creatdate desc
+    </select>
+    <!-- 修改语句 -->
+    <update id="editUser" parameterType="com.welleplus.entity.UserInfo">
+        update
+        t_user
+        set
+        userName=#{userName},phonenumber=#{phonenumber},name=#{name},sex=#{sex},email=#{email},
+        worktype=#{worktype},equiptype=#{equiptype},equipnumber=#{equipnumber},equipstate=#{equipstate}
+        where id = #{id}
+    </update>
+    <!-- 删除语句 -->
+    <delete id="delUser" parameterType="Long">
+        delete from
+        t_user
+        where
+        id= #{id}
+    </delete>
+    
+    <select id="getCountFromRoleAndRid" parameterType="map" resultType="Long">
+        select count(*) from t_user where role = #{role} and rid = #{rid}
     </select>
 
 </mapper>

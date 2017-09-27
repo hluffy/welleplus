@@ -45,7 +45,7 @@ public class Project implements Serializable{
     /**
      * 四级机构所属三级机构id
      */
-    private int sid;
+    private Long sid;
 
     public Long getId() {
         return id;
@@ -103,11 +103,11 @@ public class Project implements Serializable{
         this.type2 = type2;
     }
 
-    public int getSid() {
+    public Long getSid() {
         return sid;
     }
 
-    public void setSid(int sid) {
+    public void setSid(Long sid) {
         this.sid = sid;
     }
 

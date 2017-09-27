@@ -1,0 +1,168 @@
+<div ng-controller="treeCtrl">
+    <div class="col-md-12 col-sm-6 col-xs-12">
+        <div class="x_panel">
+<h2> APP现场记录
+</h2>
+<div class="x_panel">
+<div class="row">
+	<div class="col-md-2">
+		<select ng-model="engineer.currentActivity"
+			ng-options="act for act in activities"
+			style="width: 172px; height: 30px"></select>
+	</div>
+	<div class="col-md-2">
+		<select ng-model="engineer1.currentActivity1"
+			ng-options="act for act in activities1"
+			style="width: 172px; height: 30px"></select>
+	</div>
+	<div class="col-md-2">
+		<select ng-model="engineer2.currentActivity2"
+			ng-options="act for act in activities2"
+			style="width: 172px; height: 30px"></select>
+	</div>
+	<div class="col-md-2">
+		<select ng-model="engineer3.currentActivity3"
+			ng-options="act for act in activities3"
+			style="width: 172px; height: 30px"></select>
+	</div>
+	<div class="col-md-2">
+		<select ng-model="engineer4.currentActivity4"
+			ng-options="act for act in activities4"
+			style="width: 172px; height: 30px"></select>
+	</div>
+
+</div>
+<br>
+<div class="row">
+	<div class="col-md-2">
+		<dt>
+			<input type="text" placeholder="请输入起始时间" id="startdate"
+				ng-model="map.startdate">
+		</dt>
+
+	</div>
+	<div class="col-md-2">
+		<dt>
+			<input type="text" placeholder="请输入结束时间" id="enddate"
+				ng-model="map.enddate">
+		</dt>
+	</div>
+	<div class="col-md-2">
+		<div class="input-group input-group-sm">
+			<input type="text"
+				class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+				ng-model="map.vehicledefects" style="width: 200px; height: 32px"
+				placeholder=" 上传人">
+		</div>
+	</div>
+	<div class="col-md-2">
+		<div class="pull-right">
+			<button ng-click="getPositionInfo()" class="btn btn-default">
+				<i class="fa fa-search"></i>
+			</button>
+		</div>
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="col-md-12">
+		<table class="table table-striped table-bordered">
+			<thead>
+				<tr>
+					<th class="col-md-1">序号</th>
+					<th class="col-md-1">上传人</th>
+					<th class="col-md-2">上传时间</th>
+					<th class="col-md-1">工种</th>
+					<th class="col-md-2">电话</th>
+					<th class="col-md-3">上传内容</th>
+					<th class="col-md-1">图片</th>
+					<th class="col-md-2">预览</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="t in userinfos">
+					<td>{{$index+1}}</td>
+					<td style="display: none;">{{t.id}}</td>
+					<td>{{t.name}}</td>
+					<td>{{t.watchtime}}</td>
+					<td>{{t.worktype}}</td>
+					<td>{{t.phonenumber}}</td>
+					<td>{{t.mainboby}}</td>
+					<td>{{t.photpath}}</td>
+					<td align="center">
+<!-- 						<button type="button" class="btn btn-dark" ng-click="userEdit(id)">......</button> -->
+						<button class="btn btn-dark" data-toggle="modal"
+							data-target="#myModal" ng-click="userEdit(id)">详细</button>
+					</td>
+				</tr>
+			</tbody>
+			</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+		
+		
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					日志详情
+				</h4>
+			</div>
+			<div class="modal-body">
+				<h4 class="modal-title" id="myModalLabel">
+					姓名：&nbsp;{{}}
+				</h4>
+				<h4 class="modal-title" id="myModalLabel">
+					上传时间：&nbsp;{{}}
+				</h4>
+				<h4 class="modal-title" id="myModalLabel">
+					工种：&nbsp;{{}}
+				</h4>
+				<h4 class="modal-title" id="myModalLabel">
+					电话：&nbsp;{{}}
+				</h4>
+				<h4 class="modal-title" id="myModalLabel">
+					上传内容：&nbsp;{{}}
+				</h4>
+				<h4 class="modal-title" id="myModalLabel">
+					图片：&nbsp;{{}}
+				</h4>
+				<img src="images/bg_login.jpg" class="img-rounded col-md-4">
+				<img src="images/bg_login.jpg" class="img-rounded col-md-4">
+				<img src="images/bg_login.jpg" class="img-rounded col-md-4">
+				<br>
+				<img src="images/bg_login.jpg" class="img-rounded col-md-4">
+				<img src="images/bg_login.jpg" class="img-rounded col-md-4">
+				<img src="images/bg_login.jpg" class="img-rounded col-md-4">
+				<br>
+				<img src="images/bg_login.jpg" class="img-rounded col-md-4">
+				<img src="images/bg_login.jpg" class="img-rounded col-md-4">
+				<img src="images/bg_login.jpg" class="img-rounded col-md-4">
+				<br>
+				<img src="images/bg_login.jpg" class="img-rounded col-md-4">
+				<img src="images/bg_login.jpg" class="img-rounded col-md-4">
+				<img src="images/bg_login.jpg" class="img-rounded col-md-4">
+				<br>
+				<img src="images/bg_login.jpg" class="img-rounded col-md-4">
+				<img src="images/bg_login.jpg" class="img-rounded col-md-4">
+				<img src="images/bg_login.jpg" class="img-rounded col-md-4">
+				
+			</div>
+			<div class="modal-footer">
+<!-- 				<button type="button" class="btn btn-default" data-dismiss="modal">关闭 -->
+<!-- 				</button> -->
+				<button type="button" class="btn btn-primary" data-dismiss="modal">
+					确定
+				</button>
+			</div>
+			
+			
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+		</table>
+	</div>
+</div>
+</div></div></div>

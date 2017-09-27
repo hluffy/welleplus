@@ -10,5 +10,25 @@
     <insert id="addCorrelationInfo" parameterType="com.welleplus.entity.Correlation" useGeneratedKeys="true" keyProperty="id">
         insert into t_correlation(uid,pmid,grade,gradeid) values(#{uid},#{pmid},#{grade},#{gradeid});
     </insert>
+    
+    <select id="getCorrelationInfo" parameterType="com.welleplus.entity.Correlation" resultType="com.welleplus.entity.Correlation">
+        select * from t_correlation 
+        <where>
+            <if test="uid != null and uid!=''">
+                and uid = #{uid}
+            </if>
+            <if test="grade != null and grade != ''">
+                and grade = #{grade}
+            </if>
+        </where>
+    </select>
+    
+    <delete id="deleteCorrelationInfo" parameterType = "com.welleplus.entity.Correlation">
+      	delete from t_correlation where grade = #{grade} and gradeid = #{gradeid}
+    </delete>
+    
+    <delete id="deleteCorrelationInfoFromUid" parameterType = "Long">
+       delete from t_correlation where uid = #{uid} 
+    </delete>
 
 </mapper>

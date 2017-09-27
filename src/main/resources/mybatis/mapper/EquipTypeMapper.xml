@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace的值就是dao接口的完整路径，就这个demo而言namespace 就是UserMapper.java的完整路径 -->
+<mapper namespace="com.welleplus.dao.EquipTypeDao">
+	<!-- 查询定位类型 初始加载 -->
+	<select id="getCountBy1" resultType="int">
+		select count(distinct
+		uu.equipnumber) as counts from(select distinct u.equipnumber,u.equiptype from 
+		(select distinct equipnumber,equiptype from t_user,t_firm,t_company,t_section,t_project
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test="param.id != null and param.id != ''">
+				t_firm.id=#{param.id} and t_user.rid=t_firm.id and t_user.role=1
+				or t_firm.id=#{param.id} and t_company.fid=t_firm.id and
+				t_user.rid=t_company.id and
+				t_user.role=2 or t_firm.id=#{param.id} and t_company.fid=t_firm.id and
+				t_section.cid=t_company.id and t_user.rid=t_section.id and
+				t_user.role=3 or
+				t_firm.id=#{param.id} and t_company.fid=t_firm.id and t_section.cid=t_company.id and
+				t_project.sid=t_section.id and t_user.rid=t_project.id and
+				t_user.role=4
+			</if>
+		</trim>
+		) As u,((select distinct imei from map_watch_data_act 
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test="param.start != null and param.start != ''">
+				AND watch_date &gt;= #{param.start}
+			</if>
+			<if test="param.end != null and param.end != ''">
+				AND watch_date &lt;= #{param.end}
+			</if>
+			and imei is not null
+		</trim>
+		) union all (select distinct epc from t_rfidinfo 
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test="param.start != null and param.start != ''">
+				AND creatdate &gt;= #{param.start}
+			</if>
+			<if test="param.end != null and param.end != ''">
+				AND creatdate &lt;= #{param.end}
+			</if>
+			and epc is not null
+		</trim>
+		) union all (select distinct phonenumber from t_phonelocation 
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test="param.start != null and param.start != ''">
+				AND watchtime &gt;= #{param.start}
+			</if>
+			<if test="param.end != null and param.end != ''">
+				AND watchtime &lt;= #{param.end}
+			</if>
+			and phonenumber is not null
+		</trim>
+		) ) As p
+		where u.equipnumber=p.imei ) As uu
+		where uu.equiptype=1 or uu.equiptype=2 or uu.equiptype=3  
+		group by uu.equiptype
+		order by uu.equiptype
+	</select>
+	<!-- 查询定位类型 初始加载 -->
+	<select id="getCountBy2" resultType="int">
+		select count(distinct
+		uu.equipnumber) as counts from
+		(select distinct u.equipnumber,u.equiptype from((select distinct equipnumber,equiptype from t_user,t_section,t_project,
+		(select gradeid from t_correlation 
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test="param.id != null and param.id != ''">
+				uid=#{param.id}
+			</if>
+		</trim>
+		) As corr 
+		where t_section.id=corr.gradeid and t_user.rid=t_section.id and t_user.role=3 and 
+		equipnumber is not null
+		or t_section.id=corr.gradeid and t_project.sid=t_section.id and 
+		t_user.rid=t_project.id and t_user.role=4 and equipnumber is not null)
+		union all (select distinct equipnumber,equiptype from t_user,t_company,t_section,t_project
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test="param.rid != null and param.rid != ''">
+				t_company.id=#{param.rid}
+			</if>
+		</trim> 
+		and t_user.rid=t_company.id and t_user.role=2 and equipnumber is not null)
+		) As u,((select distinct imei from map_watch_data_act 
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test="param.start != null and param.start != ''">
+				AND watch_date &gt;= #{param.start}
+			</if>
+			<if test="param.end != null and param.end != ''">
+				AND watch_date &lt;= #{param.end}
+			</if>
+			and imei is not null
+		</trim>
+		) union all (select distinct epc from t_rfidinfo 
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test="param.start != null and param.start != ''">
+				AND creatdate &gt;= #{param.start}
+			</if>
+			<if test="param.end != null and param.end != ''">
+				AND creatdate &lt;= #{param.end}
+			</if>
+			and epc is not null
+		</trim>
+		) union all (select distinct phonenumber from t_phonelocation 
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test="param.start != null and param.start != ''">
+				AND watchtime &gt;= #{param.start}
+			</if>
+			<if test="param.end != null and param.end != ''">
+				AND watchtime &lt;= #{param.end}
+			</if>
+			and phonenumber is not null
+		</trim>
+		) ) As p
+		where u.equipnumber=p.imei ) As uu
+		where uu.equiptype=1 or uu.equiptype=2 or uu.equiptype=3  
+		group by uu.equiptype
+		order by uu.equiptype
+	</select>
+	<!-- 查询定位类型 初始加载 -->
+	<select id="getCountBy3" resultType="int">
+		select count(distinct
+		uu.equipnumber) as counts from
+		(select distinct u.equipnumber,u.equiptype from((select distinct equipnumber,equiptype from t_user,t_project,
+		(select gradeid from t_correlation 
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test="param.id != null and param.id != ''">
+				uid=#{param.id}
+			</if>
+		</trim>
+		) As corr 
+		where t_project.id=corr.gradeid and t_user.rid=t_project.id and t_user.role=4 and 
+		equipnumber is not null)
+		union all (select distinct equipnumber,equiptype from t_user,t_section,t_project
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test="param.rid != null and param.rid != ''">
+				t_section.id=#{param.rid}
+			</if>
+		</trim> 
+		and t_user.rid=t_section.id and t_user.role=3 and equipnumber is not null)
+		) As u,((select distinct imei from map_watch_data_act 
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test="param.start != null and param.start != ''">
+				AND watch_date &gt;= #{param.start}
+			</if>
+			<if test="param.end != null and param.end != ''">
+				AND watch_date &lt;= #{param.end}
+			</if>
+			and imei is not null
+		</trim>
+		) union all (select distinct epc from t_rfidinfo 
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test="param.start != null and param.start != ''">
+				AND creatdate &gt;= #{param.start}
+			</if>
+			<if test="param.end != null and param.end != ''">
+				AND creatdate &lt;= #{param.end}
+			</if>
+			and epc is not null
+		</trim>
+		) union all (select distinct phonenumber from t_phonelocation 
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test="param.start != null and param.start != ''">
+				AND watchtime &gt;= #{param.start}
+			</if>
+			<if test="param.end != null and param.end != ''">
+				AND watchtime &lt;= #{param.end}
+			</if>
+			and phonenumber is not null
+		</trim>
+		) ) As p
+		where u.equipnumber=p.imei ) As uu
+		where uu.equiptype=1 or uu.equiptype=2 or uu.equiptype=3  
+		group by uu.equiptype
+		order by uu.equiptype
+	</select>
+	
+	<!-- 查询定位类型 点击树加载 -->
+	<select id="getCountBytree" resultType="int">
+		select count(distinct
+		uu.equipnumber) as counts from(select distinct u.equipnumber,u.equiptype from 
+		(select distinct equipnumber,equiptype from t_user,t_firm,t_company,t_section,t_project
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test="param.id != null and param.id != ''">
+				t_firm.id=#{param.id} and t_user.rid=t_firm.id and t_user.role=1
+				or t_firm.id=#{param.id} and t_company.fid=t_firm.id and
+				t_user.rid=t_company.id and
+				t_user.role=2 or t_firm.id=#{param.id} and t_company.fid=t_firm.id and
+				t_section.cid=t_company.id and t_user.rid=t_section.id and
+				t_user.role=3 or
+				t_firm.id=#{param.id} and t_company.fid=t_firm.id and t_section.cid=t_company.id and
+				t_project.sid=t_section.id and t_user.rid=t_project.id and
+				t_user.role=4
+			</if>
+			<if test="param.desc ==1">
+				t_firm.id=#{param.descId} and t_user.rid=t_firm.id and t_user.role=1
+				or t_firm.id=#{param.descId} and t_company.fid=t_firm.id and
+				t_user.rid=t_company.id and
+				t_user.role=2 or t_firm.id=#{param.descId} and t_company.fid=t_firm.id and
+				t_section.cid=t_company.id and t_user.rid=t_section.id and
+				t_user.role=3 or
+				t_firm.id=#{param.descId} and t_company.fid=t_firm.id and t_section.cid=t_company.id and
+				t_project.sid=t_section.id and t_user.rid=t_project.id and
+				t_user.role=4
+			</if>
+			<if test="param.desc ==2">
+				t_company.id=#{param.descId} and t_user.rid=t_company.id and
+				t_user.role=2 or t_company.id=#{param.descId} and
+				t_section.cid=t_company.id and t_user.rid=t_section.id and
+				t_user.role=3 or
+				t_company.id=#{param.descId} and t_section.cid=t_company.id and
+				t_project.sid=t_section.id and t_user.rid=t_project.id and
+				t_user.role=4
+			</if>
+			<if test="param.desc ==3">
+				t_section.id=#{param.descId} and t_user.rid=t_section.id and
+				t_user.role=3 or 
+				t_section.id=#{param.descId} and
+				t_project.sid=t_section.id and t_user.rid=t_project.id and
+				t_user.role=4
+			</if>
+			<if test="param.desc ==4">
+				t_project.id=#{param.descId} and t_user.rid=t_project.id and
+				t_user.role=4 
+			</if>
+		</trim>
+		) As u,((select distinct imei from map_watch_data_act 
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test="param.start != null and param.start != ''">
+				AND watch_date &gt;= #{param.start}
+			</if>
+			<if test="param.end != null and param.end != ''">
+				AND watch_date &lt;= #{param.end}
+			</if>
+			and imei is not null
+		</trim>
+		) union all (select distinct epc from t_rfidinfo 
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test="param.start != null and param.start != ''">
+				AND creatdate &gt;= #{param.start}
+			</if>
+			<if test="param.end != null and param.end != ''">
+				AND creatdate &lt;= #{param.end}
+			</if>
+			and epc is not null
+		</trim>
+		) union all (select distinct phonenumber from t_phonelocation 
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test="param.start != null and param.start != ''">
+				AND watchtime &gt;= #{param.start}
+			</if>
+			<if test="param.end != null and param.end != ''">
+				AND watchtime &lt;= #{param.end}
+			</if>
+			and phonenumber is not null
+		</trim>
+		) ) As p
+		where u.equipnumber=p.imei ) As uu
+		where uu.equiptype=1 or uu.equiptype=2 or uu.equiptype=3  
+		group by uu.equiptype
+		order by uu.equiptype
+	</select>
+
+</mapper>

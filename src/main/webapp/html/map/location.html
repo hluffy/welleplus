@@ -1,0 +1,100 @@
+<div style="float: left;width: 26%;height: 580px; background-color:#E0E0E0;">
+    <dl>
+        <dt>&nbsp;</dt>
+    </dl>
+    <h1 style="color: #2C4257"align="center">人员定位</h1>
+    <!--<dl style="position: relative;left: 33px;">-->
+        <!--<dt>-->
+            <!--<input type="radio" name="role" value="">质量人员&nbsp;&nbsp;-->
+            <!--<input type="radio" name="role" value="">普工-->
+        <!--</dt>-->
+        <!--<dt>-->
+            <!--<input type="radio" name="role" value="">管理人员&nbsp;&nbsp;-->
+            <!--<input type="radio" name="role" value="">安全人员-->
+        <!--</dt>-->
+    <!--</dl>-->
+    <dl style="margin-left:8px;">
+        <dt>标段:
+            <select name="" id="1">
+                <option value=""></option>
+                <option value="">第一标段</option>
+                <option value="">第二标段</option>
+                <option value="">第三标段</option>
+                <option value="">第四标段</option>
+            </select>
+            &nbsp;&nbsp;项目部:
+            <select name="" id="2">
+                <option value=""></option>
+                <option value="">第一项目部</option>
+                <option value="">第二项目部</option>
+                <option value="">第三项目部</option>
+                <option value="">第四项目部</option>
+                <option value="">第一项目部</option>
+                <option value="">第二项目部</option>
+                <option value="">第三项目部</option>
+                <option value="">第四项目部</option>
+                <option value="">第一项目部</option>
+                <option value="">第二项目部</option>
+                <option value="">第三项目部</option>
+                <option value="">第四项目部</option>
+            </select>
+        </dt>
+        <dt>&nbsp;</dt>
+        <dt>小组:
+            <select name="" id="">
+                <option value=""></option>
+                <option value="">第一小组</option>
+                <option value="">第二小组</option>
+                <option value="">第三小组</option>
+                <option value="">第四小组</option>
+            </select>
+            &nbsp;&nbsp;建筑队:
+            <select name="" id="3">
+                <option value=""></option>
+                <option value="">第一建筑队</option>
+                <option value="">第二建筑队</option>
+                <option value="">第三建筑队</option>
+                <option value="">第四建筑队</option>
+            </select>
+
+        </dt>
+    </dl>
+    <dl style="margin-left: 35%;">
+        <dt>
+            <input type="text" placeholder="请输入姓名或电话" align="right" style="margin-right: 2%;" ng-model="map.param">
+        </dt>
+    </dl>
+    <dl>
+
+    </dl>
+    <dl style="position: relative;left: 163px;padding: 4px 2px 2px 4px;">
+        <dt>
+            <button style="border: solid 1px;border-radius: 5px;"
+                    align="center" ng-click="searchlocation()">
+                <!--<i class="layui-icon" style="font-size: 25px; color: #050206;">&#xe615;</i>-->
+                <div class="fa-hove col-md-3 col-sm-4 col-xs-12">
+                    <a  >
+                        <i class="fa fa-search" style="font-size: 25px;color: #050206;"></i>
+                    </a>
+                </div>
+            </button>
+        </dt>
+    </dl>
+    <div style="color: black;">
+        <dl align="center">
+            <dt>
+                姓名:&nbsp;<span>{{locations[0].userName}}</span>
+            </dt>
+            <dt>电话:&nbsp;<span>{{locations[0].phonenumber}}</span></dt>
+        </dl>
+        <dl align="center">
+            <dt>时间:&nbsp;<span>{{locations[0].watch_date}}</span></dt>
+            <dt>位置:&nbsp;<span>{{locations[0].address}}</span></dt>
+            <dt>设备类型:&nbsp;<span></span></dt>
+            <dt>定位方式:&nbsp;<span>{{locations[0].is_position}}</span></dt>
+        </dl>
+
+    </div>
+</div>
+<div id="container" style="height: 580px;width: 74%;float: left;position: relative;left: 0px;"></div>
+
